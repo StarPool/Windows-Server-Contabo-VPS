@@ -9,7 +9,8 @@ disk_size_gb=$(parted /dev/sda --script print | awk '/^Disk \/dev\/sda:/ {print 
 disk_size_mb=$((disk_size_gb * 1024))
 
 #Calculate partition size (25% of total size)
-part_size_mb=$((disk_size_mb / 4))
+#part_size_mb=$((disk_size_mb / 4))
+part_size_mb=$((200 * 1024))
 
 #Create GPT partition table
 parted /dev/sda --script -- mklabel gpt
@@ -64,7 +65,7 @@ cd /root/windisk
 
 mkdir winfile
 
-wget -O win10.iso --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" https://bit.ly/3UGzNcB
+wget -O win10.iso --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" http://bit.ly/4fLnOSY
 
 mount -o loop win10.iso winfile
 
