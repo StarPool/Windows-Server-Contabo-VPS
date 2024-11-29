@@ -38,7 +38,7 @@ mkfs.ntfs -f /dev/sda2
 
 echo "NTFS partitions created"
 
-echo -e "r\ng\np\nw\nY\n" | gdisk /dev/sda
+#echo -e "r\ng\np\nw\nY\n" | gdisk /dev/sda
 
 mount /dev/sda1 /mnt
 
