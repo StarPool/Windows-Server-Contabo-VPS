@@ -10,14 +10,13 @@ disk_size_mb=$((disk_size_gb * 1024))
 
 #Calculate partition size (25% of total size)
 part_size_mb=$((disk_size_mb / 4))
-#part_size_mb=$((200 * 1024))
 
 #Create GPT partition table
 parted /dev/sda --script -- mklabel gpt
 
 #Create two partitions
-parted /dev/sda --script -- mkpart primary ntfs 1MB ${part_size_mb}MB
-parted /dev/sda --script -- mkpart primary ntfs ${part_size_mb}MB $((2 * part_size_mb))MB
+parted /dev/sda --script -- mkpart primary ntfs 1MB 204800MB
+parted /dev/sda --script -- mkpart primary ntfs 204800MB 307200MB
 
 #Inform kernel of partition table changes
 partprobe /dev/sda
