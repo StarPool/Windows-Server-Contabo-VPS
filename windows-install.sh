@@ -15,8 +15,8 @@ part_size_mb=$((disk_size_mb / 4))
 parted /dev/sda --script -- mklabel gpt
 
 #Create two partitions
-parted /dev/sda --script -- mkpart primary ntfs 1MB 204800MB
-parted /dev/sda --script -- mkpart primary ntfs 204800MB 307200MB
+parted /dev/sda --script -- mkpart primary ntfs 1MB 102400MB
+parted /dev/sda --script -- mkpart primary ntfs 102400MB 204800MB
 
 #Inform kernel of partition table changes
 partprobe /dev/sda
