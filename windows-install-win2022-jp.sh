@@ -96,4 +96,4 @@ echo 'add virtio /virtio_drivers' >> cmd.txt
 
 wimlib-imagex update boot.wim 2 < cmd.txt
 
-reboot
+#reboot
