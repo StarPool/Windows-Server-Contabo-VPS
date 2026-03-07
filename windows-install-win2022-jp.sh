@@ -21,25 +21,31 @@ parted /dev/sda --script -- mkpart primary ntfs 51200MB 92160MB
 #Inform kernel of partition table changes
 partprobe /dev/sda
 
-sleep 30
+sleep 60
 
 partprobe /dev/sda
 
-sleep 30
+sleep 60
 
 partprobe /dev/sda
 
-sleep 30 
+sleep 60 
 
 #Format the partitions
 mkfs.ntfs -f /dev/sda1
 mkfs.ntfs -f /dev/sda2
 
+sleep 60 
+
 echo "NTFS partitions created"
 
 echo -e "r\ng\np\nw\nY\n" | gdisk /dev/sda
 
+sleep 30 
+
 mount /dev/sda1 /mnt
+
+sleep 30 
 
 #Prepare directory for the Windows disk
 cd ~
@@ -47,7 +53,11 @@ mkdir windisk
 
 mount /dev/sda2 windisk
 
+sleep 30 
+
 grub-install --root-directory=/mnt /dev/sda
+
+sleep 30 
 
 #Edit GRUB configuration
 cd /mnt/boot/grub
